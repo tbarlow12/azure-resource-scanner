@@ -1,6 +1,9 @@
-from Common.Contracts import ServiceFactory, QueueService, TableStorage
+from Common.Contracts import ServiceFactory
+from . import AzureCosmosDb, AzureStorageQueue, AzureResourceService
+from .azure_storage_container import AzureStorageContainer
+from .azure_subscription_service import AzureSubscriptionService
 from .Config import AzureConfig
-from . import AzureCosmosDb, AzureStorageQueue, AzureResourceService, AzureResourceServiceConfig
+
 
 class AzureServiceFactory(ServiceFactory):
     def __init__(self, config:AzureConfig):
@@ -13,6 +16,12 @@ class AzureServiceFactory(ServiceFactory):
         return AzureStorageQueue(
             self._config.get_queue_name(),
             self._config.get_storage_config())
-    
+
     def resource_service(self, subscription_id):
         return AzureResourceService(self._config.get_resource_config(subscription_id))
+
+    def subscription_service(self):
+        return AzureSubscriptionService(self._config.get_subscription_config())
+
+    def config_container(self):
+        return AzureStorageContainer(self._config.get_config_container_name(), self._config.get_storage_config())
