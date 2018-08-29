@@ -14,19 +14,19 @@ class AzureConfig:
             self._config.get_property('AZURE_TENANT_ID'),
             self._config.get_property('AZURE_CLIENT_SECRET')
         )
-    
+
     def get_resource_config(self, subscription_id):
         return AzureResourceServiceConfig(
             subscription_id,
             self.get_credentials()
         )
-    
+
     def get_storage_config(self):
         return AzureStorageConfig(
             self._config.get_property('AZURE_STORAGE_ACCOUNT'),
             self._config.get_property('AZURE_STORAGE_KEY')
         )
-    
+
     def get_cosmos_storage_config(self):
         return AzureCosmosDbConfig(
             self._config.get_property('AZURE_COSMOS_TABLE'),
@@ -35,5 +35,8 @@ class AzureConfig:
                 self._config.get_property('AZURE_COSMOS_KEY')
             ))
 
-    def get_queue_name(self):
-        return self._config.get_property('AZURE_STORAGE_QUEUE_NAME')
+    def get_task_queue_name(self):
+        return self._config.get_property('AZURE_TASK_QUEUE_NAME')
+
+    def get_payload_queue_name(self):
+        return self._config.get_property('AZURE_PAYLOAD_QUEUE_NAME')
