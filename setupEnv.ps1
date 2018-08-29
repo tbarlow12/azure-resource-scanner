@@ -1,0 +1,8 @@
+$env:AZURE_CLIENT_ID          = ""
+$env:AZURE_CLIENT_SECRET      = ""
+$env:AZURE_TENANT_ID          = ""
+$env:CONFIG_CONTAINER_BLOB    = ""
+$env:AZURE_SUBSCRIPTION_ID    = ""
+$env:AZURE_STORAGE_ACCOUNT    = ""
+$env:AZURE_STORAGE_KEY        = ""
+$env:AZURE_STORAGE_QUEUE_NAME = ""
